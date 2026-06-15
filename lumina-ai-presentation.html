@@ -68,7 +68,6 @@
       transform: translateX(-60px);
       transition: opacity .5s cubic-bezier(.4, 0, .2, 1), transform .5s cubic-bezier(.4, 0, .2, 1);
       pointer-events: none;
-      overflow-x: hidden;
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
     }
@@ -148,18 +147,7 @@
       border-radius: 50%;
       background: var(--dim);
       cursor: pointer;
-      transition: all .3s;
-      position: relative;
-    }
-
-    .dot::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 44px;
-      height: 44px;
+      transition: all .3s
     }
 
     .dot.on {
@@ -187,8 +175,8 @@
       background: var(--s1);
       border: 1px solid var(--border);
       color: var(--muted);
-      width: 44px;
-      height: 44px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -1414,291 +1402,52 @@
     }
 
     /* ── RESPONSIVE ── */
+    @media(max-width:768px) {
 
-    /* Breakpoint 1400px+ (Desktop Large) */
-    @media (min-width: 1400px) {
-      .slide .wrap {
-        gap: 24px;
-      }
-    }
-
-    /* Breakpoint 1200px (Desktop Medium) */
-    @media (max-width: 1200px) {
-      .slide {
-        padding: clamp(30px, 4vw, 50px) clamp(20px, 3.5vw, 48px) 80px;
-      }
-
-      #s2 .two {
-        gap: 20px;
-      }
-    }
-
-    /* Breakpoint 992px (Tablets Landscape) */
-    @media (max-width: 992px) {
       .arr {
         display: none !important;
-        /* Hide arrows on touch screens to avoid overlap */
       }
 
+      #s2 .two,
       #s5 .grid,
+      #s6 .plans,
       #s7 .grid,
-      #s9 .grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
-      }
-
-      #s6 .plans {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
-      }
-
-      #s11 .logo-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 16px;
-      }
-
+      #s8 .cmp,
+      #s9 .grid,
+      #s11 .logo-grid,
       #s12 .cgrid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-      }
-    }
-
-    /* Breakpoint 768px (Tablets Portrait / Large Mobile) */
-    @media (max-width: 768px) {
-      .orb {
-        filter: blur(50px);
-        opacity: 0.05 !important;
-        /* Performance optimization for mobile GPUs */
+        grid-template-columns: 1fr 1fr
       }
 
-      .slide {
-        padding: 30px 20px 80px;
-      }
-
-      .slide .wrap {
-        gap: 16px;
-      }
-
-      /* Slide 2: Stacks vertically */
-      #s2 .two {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-
-      /* Slide 3: Stacks vertically and centers middle element horizontally */
       #s3 .three {
         grid-template-columns: 1fr;
-        gap: 20px;
-      }
-
-      #s3 .mid {
-        flex-direction: row;
-        justify-content: center;
-        gap: 12px;
-      }
-
-      #s3 .mline {
-        width: 50px;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      }
-
-      /* Slide 6 (Pricing): Stack vertically, showing Featured (Growth) plan first */
-      #s6 .plans {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        width: 100%;
-        max-width: 480px;
-        margin: 20px auto 0;
-      }
-
-      #s6 .plan:nth-child(1) {
-        order: 2;
-      }
-
-      #s6 .plan:nth-child(2) {
-        order: 1;
-      }
-
-      /* Growth Plan pops first */
-      #s6 .plan:nth-child(3) {
-        order: 3;
-      }
-
-      /* Slide 8: Before / After vertical stacking */
-      #s8 .cmp {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
-
-      /* Slide 11: Logo Grid in 2 columns */
-      #s11 .logo-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 14px;
-      }
-
-      /* Slide 12: Contact list vertically stacked */
-      #s12 .cgrid {
-        grid-template-columns: 1fr;
-        gap: 10px;
-        max-width: 400px;
-        margin: 20px auto 0;
-      }
-
-      #s12 .cc {
-        padding: 12px 16px;
+        gap: 14px
       }
     }
 
-    /* Breakpoint 576px (Mobile Landscape / Large Phones) */
-    @media (max-width: 576px) {
-      .slide {
-        padding: 24px 16px 80px;
-      }
+    @media(max-width:500px) {
 
+      #s2 .two,
       #s5 .grid,
+      #s6 .plans,
       #s7 .grid,
-      #s9 .grid {
-        grid-template-columns: 1fr;
-        gap: 14px;
+      #s8 .cmp,
+      #s9 .grid,
+      #s11 .logo-grid,
+      #s12 .cgrid {
+        grid-template-columns: 1fr
       }
 
-      #s11 .logo-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-      }
-
-      #s11 .logo-card {
-        height: 90px;
-        padding: 12px;
-      }
-    }
-
-    /* Breakpoint 480px (Standard Phones - iPhone 13/14/15, Samsung S) */
-    @media (max-width: 480px) {
-
-      /* Slide 1 Cover adjustments */
       #s1 .ctas {
         flex-direction: column;
         width: 100%;
-        max-width: 290px;
-        margin: 16px auto 0;
-        gap: 10px;
+        max-width: 320px;
+        margin: 20px auto 0;
       }
 
       #s1 .ctas .btn {
         width: 100%;
         justify-content: center;
-      }
-
-      #s1 .pill-row {
-        gap: 8px;
-        margin-top: 20px;
-      }
-
-      #s1 .pill {
-        width: 100%;
-        justify-content: center;
-        text-align: center;
-      }
-
-      /* Slide 10 Simulation updates */
-      #s10 .bbl {
-        font-size: 12px;
-        padding: 8px 12px;
-        max-width: 85%;
-      }
-
-      #s10 .av {
-        width: 24px;
-        height: 24px;
-        font-size: 10px;
-      }
-
-      #s10 .wbody {
-        min-height: 230px;
-        padding: 12px;
-        gap: 10px;
-      }
-
-      #s10 .wbar {
-        padding: 8px 12px;
-        font-size: 11px;
-      }
-
-      /* Slide 12 CTA and QR Optimization */
-      #s12 .btn-p {
-        width: 100%;
-        max-width: 290px;
-        justify-content: center;
-        padding: 14px 28px;
-        font-size: 16px;
-      }
-
-      #s12 .trial {
-        font-size: 11px;
-        margin-top: 12px;
-      }
-
-      #s12 .qr {
-        width: 64px;
-        height: 64px;
-      }
-
-      #s12 .qr svg {
-        width: 44px;
-        height: 44px;
-      }
-    }
-
-    /* Breakpoint 390px (Medium/Small Phones) */
-    @media (max-width: 390px) {
-
-      .card,
-      #s3 .side,
-      #s5 .fc,
-      #s7 .ic,
-      #s8 .col,
-      #s9 .wc,
-      #s12 .cc {
-        padding: 14px;
-      }
-
-      #s4 .sbody {
-        padding: 10px 14px;
-      }
-
-      #s4 .conn {
-        margin-right: 20px !important;
-      }
-    }
-
-    /* Breakpoint 360px (iPhone SE, Small Android Devices) */
-    @media (max-width: 360px) {
-      .slide {
-        padding: 20px 12px 75px;
-      }
-
-      .disp {
-        font-size: clamp(24px, 7vw, 34px);
-      }
-
-      .head {
-        font-size: clamp(18px, 6vw, 24px);
-      }
-
-      #s1 .tag {
-        font-size: 11px;
-      }
-
-      #s10 .bbl {
-        font-size: 11px;
-        padding: 6px 10px;
-      }
-
-      #s11 .logo-grid {
-        grid-template-columns: 1fr;
       }
     }
 
@@ -2363,8 +2112,7 @@
               <g fill="none" stroke-width="2">
                 <polygon points="25,10 40,18 40,32 25,40 10,32 10,18" stroke="var(--accent2)" />
                 <polygon points="25,16 33,21 33,29 25,34 17,29 17,21" stroke="var(--teal)" stroke-width="1.5" />
-                <text x="55" y="31" font-family="'Jura', sans-serif" font-size="15" font-weight="700" fill="var(--text)"
-                  letter-spacing="1">HEXATECH</text>
+                <text x="55" y="31" font-family="'Jura', sans-serif" font-size="15" font-weight="700" fill="var(--text)" letter-spacing="1">HEXATECH</text>
               </g>
             </svg>
           </div>
@@ -2374,8 +2122,7 @@
               <g fill="none" stroke-width="2">
                 <path d="M10,35 L25,12 L40,35 Z" stroke="var(--teal)" />
                 <path d="M18,35 L25,24 L32,35 Z" stroke="var(--accent2)" stroke-width="1.5" />
-                <text x="55" y="31" font-family="'Jura', sans-serif" font-size="15" font-weight="700" fill="var(--text)"
-                  letter-spacing="1">VERTEX</text>
+                <text x="55" y="31" font-family="'Jura', sans-serif" font-size="15" font-weight="700" fill="var(--text)" letter-spacing="1">VERTEX</text>
               </g>
             </svg>
           </div>
@@ -2386,8 +2133,7 @@
                 <circle cx="25" cy="25" r="13" stroke="var(--accent2)" />
                 <circle cx="25" cy="25" r="7" stroke="var(--teal)" stroke-width="1.5" />
                 <path d="M25,4 L25,10 M25,40 L25,46 M4,25 L10,25 M40,25 L46,25" stroke="var(--teal)" />
-                <text x="55" y="31" font-family="'Jura', sans-serif" font-size="15" font-weight="700" fill="var(--text)"
-                  letter-spacing="1">NEXUS</text>
+                <text x="55" y="31" font-family="'Jura', sans-serif" font-size="15" font-weight="700" fill="var(--text)" letter-spacing="1">NEXUS</text>
               </g>
             </svg>
           </div>
@@ -2397,8 +2143,7 @@
               <g fill="none" stroke-width="2">
                 <path d="M12,25 Q25,12 38,25 Q25,38 12,25 Z" stroke="var(--teal)" />
                 <circle cx="25" cy="25" r="4" fill="var(--accent2)" stroke="none" />
-                <text x="55" y="31" font-family="'Jura', sans-serif" font-size="15" font-weight="700" fill="var(--text)"
-                  letter-spacing="1.5">NOVA.AI</text>
+                <text x="55" y="31" font-family="'Jura', sans-serif" font-size="15" font-weight="700" fill="var(--text)" letter-spacing="1.5">NOVA.AI</text>
               </g>
             </svg>
           </div>
@@ -2408,8 +2153,7 @@
               <g fill="none" stroke-width="2">
                 <path d="M10,15 L40,15 L25,38 Z" stroke="var(--accent2)" />
                 <path d="M15,18 L35,18 L25,33 Z" stroke="var(--teal)" stroke-width="1.5" />
-                <text x="55" y="31" font-family="'Jura', sans-serif" font-size="15" font-weight="700" fill="var(--text)"
-                  letter-spacing="1">SPECTRA</text>
+                <text x="55" y="31" font-family="'Jura', sans-serif" font-size="15" font-weight="700" fill="var(--text)" letter-spacing="1">SPECTRA</text>
               </g>
             </svg>
           </div>
@@ -2420,8 +2164,7 @@
                 <path d="M15,12 L35,12 L35,32 L15,32 Z" stroke="var(--teal)" />
                 <path d="M20,17 L30,17 L30,27 L20,27 Z" stroke="var(--accent2)" stroke-width="1.5" />
                 <circle cx="25" cy="25" r="2" fill="var(--text)" stroke="none" />
-                <text x="55" y="31" font-family="'Jura', sans-serif" font-size="15" font-weight="700" fill="var(--text)"
-                  letter-spacing="1">LUMINA</text>
+                <text x="55" y="31" font-family="'Jura', sans-serif" font-size="15" font-weight="700" fill="var(--text)" letter-spacing="1">LUMINA</text>
               </g>
             </svg>
           </div>
@@ -2476,7 +2219,24 @@
           </div>
         </div>
 
-
+        <div style="margin-top:18px;text-align:center">
+          <div class="qr">
+            <svg width="54" height="54" viewBox="0 0 54 54" fill="none">
+              <rect x="3" y="3" width="19" height="19" rx="2" fill="#0f1117" />
+              <rect x="7" y="7" width="11" height="11" rx="1" fill="#715FFF" />
+              <rect x="32" y="3" width="19" height="19" rx="2" fill="#0f1117" />
+              <rect x="36" y="7" width="11" height="11" rx="1" fill="#715FFF" />
+              <rect x="3" y="32" width="19" height="19" rx="2" fill="#0f1117" />
+              <rect x="7" y="36" width="11" height="11" rx="1" fill="#715FFF" />
+              <rect x="32" y="32" width="5" height="5" fill="#715FFF" />
+              <rect x="40" y="32" width="5" height="5" fill="#715FFF" />
+              <rect x="32" y="40" width="5" height="5" fill="#715FFF" />
+              <rect x="40" y="40" width="5" height="5" fill="#715FFF" />
+              <rect x="36" y="36" width="5" height="5" fill="#a78bfa" />
+            </svg>
+          </div>
+          <p style="font-size:11px;color:var(--muted);margin-top:4px">wa.me/201557373230</p>
+        </div>
       </div>
     </section>
 
